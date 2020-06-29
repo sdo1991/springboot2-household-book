@@ -1,0 +1,187 @@
+{{>layout/header}}
+
+
+
+<!--포스트 바디-->
+
+<div class="container" style="top:100px; width:450px">
+
+    <!--공지사항 공간-->
+    <div id="alert-top">
+        <div class="alert alert-success">
+            <strong>공지</strong> 이 페이지는 샘플 페이지입니다.
+        </div>
+        <div class="alert alert-success">
+            <strong>공지</strong> 이 페이지는 샘플 페이지입니다.
+        </div>
+        <div class="alert alert-danger">
+            <strong>미완성!</strong> 현재 개발중입니다.
+        </div>
+
+        <div class="alert alert-warning alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>주의!</strong> 반응형 프론트엔드 웹개발은 조까씁니다.</a>
+        </div>
+    </div>
+
+
+    <!--포스트 공간-->
+    <div id="post">
+        <div class="media border p-3">
+            <div class="media-body">
+                <div class="row">
+                    <img class="rounded-circle align-self-start col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2" alt="Cinque Terre" src="img/post1_profile.jpg" style="width:60px; height:60px">
+                    <h4 class="col">John Doe <small></br><i>Posted on February 19, 2016</i></small></h4>
+                </div>
+
+                <p>
+                <div id="post-image-carousel" class="carousel slide p-1" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                        <li data-target="#demo" data-slide-to="1"></li>
+                        <li data-target="#demo" data-slide-to="2"></li>
+                        <li data-target="#demo" data-slide-to="3"></li>
+                    </ul>
+
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="img/content-1.jpg" style="width:100%; height: 300px;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/content-2.jpg" style="width:100%; height: 300px;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/content-3.jpg" style="width:100%; height: 300px;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="img/content.jpg" style="width:100%; height: 300px;">
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#post-image-carousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#post-image-carousel" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+                <!--본문-->
+                <div id="post-body">
+                    <p>抱いてそれを彼らに住んでいるときに、ある例砂漠である。彼らの青春以上のことに、熱い脾臓、それらからである。私たち実に燃え。彼らの青春以上のことに、熱い脾臓、それらからである。私たち実に燃え。彼らの青春以上のことに、熱い脾臓、それらからである。私たち実に燃え	ウォン台で</p>
+                    <button type="button" class="btn btn-link">더 보기</button>
+                    <!--
+                    <hr>
+                    <p class="card-text">품고 그것을 그들에게 사는가 때에, 있는 예가 사막이다. 그들의 청춘 이상을 것이 위하여, 뜨거운지라, 그들은 때문이다. 우리 실로 타오르고 원대하고, 반짝이는 그들은 꾸며 열락의 있으랴? 대한 그들은 천하를 칼이다. 없는 트고, 살았으며, 굳세게 눈에 이것이다.새 가지에 황금시대를 영락과 품었기 인간의 광야에서 찾아 어디 이것이다. 얼마나 있음으로써 불어 것이다. 만물은 이는 인도하겠다는 꽃 인생을 장식하는 길지 과실이 우리의 힘있다. 인간이 노년에게서 들어 피가 그와 얼마나 이것이다. 가진 사랑의 안고, 우리의 크고 시들어 그들의 우리의 이것이다. 원대하고, 청춘은 없으면 것이다.보라, 무엇이 것이다.</p>
+                    -->
+                    <p><small class="text-muted">Last updated 3 mins ago</small></p>
+
+                    <a href="#" class="card-text">#잡담</a>
+                    <a href="#" class="card-text">#헬프</a>
+                    <a href="#" class="card-text">#테스트</a>
+
+                    <p>
+                    <div class="row float-left">
+                        <a href="#" class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3"><i class='fas fa-heart' style='color:pink'></i>104</a>
+                        <a href="#" class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3"><i class='fas fa-comment' style=''></i>324</a>
+                        <button type="button" class="btn btn-light" data-toggle="popover" html="true" data-trigger="focus"
+                                data-content="
+										<a href='#'><i class='fas fa-tenge' style='font-size:24px color:blue'></i>번역하기  </a>
+										<a href='#'><i class='far fa-copy' style='font-size:24px'></i>내용복사</a></br>
+										<a href='#'><i class='fas fa-crop-alt' style='font-size:24px color:yellow'></i>주소복사  </a>
+										<a href='#'><i class='fas fa-crop-alt' style='font-size:24px color:yellow'></i>스크랩</a></br>
+										<hr>
+										<a href='#'><i class='fas fa-exclamation-triangle' style='font-size:24px color:red'></i>신고</a></br>
+										">
+
+                            <svg class="bi bi-grid" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M1 2.5A1.5 1.5 0 012.5 1h3A1.5 1.5 0 017 2.5v3A1.5 1.5 0 015.5 7h-3A1.5 1.5 0 011 5.5v-3zM2.5 2a.5.5 0 00-.5.5v3a.5.5 0 00.5.5h3a.5.5 0 00.5-.5v-3a.5.5 0 00-.5-.5h-3zm6.5.5A1.5 1.5 0 0110.5 1h3A1.5 1.5 0 0115 2.5v3A1.5 1.5 0 0113.5 7h-3A1.5 1.5 0 019 5.5v-3zm1.5-.5a.5.5 0 00-.5.5v3a.5.5 0 00.5.5h3a.5.5 0 00.5-.5v-3a.5.5 0 00-.5-.5h-3zM1 10.5A1.5 1.5 0 012.5 9h3A1.5 1.5 0 017 10.5v3A1.5 1.5 0 015.5 15h-3A1.5 1.5 0 011 13.5v-3zm1.5-.5a.5.5 0 00-.5.5v3a.5.5 0 00.5.5h3a.5.5 0 00.5-.5v-3a.5.5 0 00-.5-.5h-3zm6.5.5A1.5 1.5 0 0110.5 9h3a1.5 1.5 0 011.5 1.5v3a1.5 1.5 0 01-1.5 1.5h-3A1.5 1.5 0 019 13.5v-3zm1.5-.5a.5.5 0 00-.5.5v3a.5.5 0 00.5.5h3a.5.5 0 00.5-.5v-3a.5.5 0 00-.5-.5h-3z" clip-rule="evenodd"/>
+                            </svg>
+
+                        </button>
+                    </div>
+                    <div class="float-right">
+                        <a href="#" class=""><i class='fas fa-pencil-alt' style='color:blue'></i>수정</a>
+                        <a href="#" class=""><i class='fas fa-eraser' style='color:red'></i>삭제</a>
+                    </div>
+                    </p>
+
+                    </br>
+                    </br>
+
+                    <!--댓글-->
+                    <div>
+
+                        <div class="media">
+                            <img src="img/profile.jpg" alt="John Doe" class="rounded-circle" style="width:30px; height:30px;">
+                            <div class="media-body p-1">
+                                <p><a href="#">John Doe</a><small> Lorem ipsum...</br>
+                                </small>
+
+                                    <a href="#"><i class='far fa-heart' style='color:pink'></i>12</a>
+
+                                    <a href="#"><i class='far fa-comment-dots' style='color:blue'></i>댓글쓰기</a>
+                                    <a href="#" class=""><i class='fas fa-pencil-alt' style='color:blue'></i>수정</a>
+                                    <a href="#" class=""><i class='fas fa-eraser' style='color:red'></i>삭제</a>
+
+
+                                </p>
+                                <div class="media">
+                                    <img src="img/profile.jpg" alt="John Doe" class="rounded-circle" style="width:30px; height:30px;">
+                                    <div class="media-body p-1">
+                                        <p><a href="#">John Doe</a><small> Lorem ipsum...</small></p>
+
+                                        <div class="media">
+                                            <img src="img/profile.jpg" alt="John Doe" class="rounded-circle" style="width:30px; height:30px;">
+                                            <div class="media-body p-1">
+                                                <p><a href="#">John Doe</a><small> Lorem ipsum...</small></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="media">
+                                    <img src="img/profile.jpg" alt="John Doe" class="rounded-circle" style="width:30px; height:30px;">
+                                    <div class="media-body p-1">
+                                        <p><a href="#">John Doe</a><small> Lorem ipsum...</small></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="media">
+                            <img src="img/profile.jpg" alt="John Doe" class="rounded-circle" style="width:30px; height:30px;">
+                            <div class="media-body p-1">
+                                <p><a href="#">John Doe</a><small> Lorem ipsum...</small></p>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <img src="img/profile.jpg" alt="John Doe" class="rounded-circle" style="width:30px; height:30px;">
+                            <div class="media-body p-1">
+                                <p><a href="#">John Doe</a><small> Lorem ipsum...</small></p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <form>
+                        <div class="form-group row">
+                            <img src="img/profile.jpg" class="rounded-circle col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" alt="Cinque Terre" style="width:30px; height:30px">
+                            <textarea class="form-control col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8" rows="2" id="comment" name="text" style="font-size:9pt; resize:none"></textarea>
+                            <button type="button" class="btn btn-light" style="background-color: blue"><i class='far fa-edit' style='color:white'></i></button>
+                        </div>
+                    </form>
+
+
+                </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{>layout/footer}}

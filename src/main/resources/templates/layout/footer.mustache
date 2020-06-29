@@ -1,0 +1,21 @@
+
+
+<!--좌측아래 위젯구역-->
+
+<div class="position-fixed" style="bottom:20px; right:20px">
+
+    {{#alarm}}{{#activated}}
+    <a href="/my_message" type="button" id="alarm_btn" class="btn btn-light rounded-circle" style="background-color: blue" data-toggle="tooltip" data-placement="top" title="{{alarmCount}}개의 새 알림이 있습니다."><i class='far fa-bell' style='font-size:30px;color:white'></i></a>
+    {{/activated}}{{/alarm}}
+    </br></br>
+    <button type="button" data-toggle="modal" data-target="#saveModal" class="btn btn-light rounded-circle" style="background-color: #50bcdf"><i class='far fa-edit' style='font-size:30px;color:white'></i></button>
+
+</div>
+
+
+
+
+{{>layout/write_modal}}
+{{>layout/update_modal}}
+{{>layout/report_modal}}
+

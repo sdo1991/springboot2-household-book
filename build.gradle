@@ -1,0 +1,50 @@
+buildscript{
+    ext{
+        springBootVersion = '2.1.7.RELEASE'
+    }
+    repositories{
+        mavenCentral()
+        jcenter()
+    }
+    dependencies{
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group 'com.dongoh.book'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.projectlombok:lombok')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')//스프링 부트용 spring data jpa 추상화 라이브러리
+    //스프링 부트 버전에 맞춰 자동으로 jpa 관련 라이브러리 버전 관리
+    compile('com.h2database:h2')//h2:인메모리 관계형 데이터베이스. 재시작할때마다 초기화되어 테스트용으로 씀
+    compile('org.springframework.boot:spring-boot-starter-mustache')
+    compile('org.apache.commons:commons-lang3:3.0')
+    compile('org.springframework.boot:spring-boot-starter-oauth2-client')
+    compile('org.springframework.session:spring-session-jdbc')//db세션
+
+    //compile('org.mariadb.jdbc:mariadb-java-client')
+
+
+    compile 'com.google.cloud:google-cloud-translate:1.94.5'//google api
+
+
+
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.security:spring-security-test')
+
+
+
+}

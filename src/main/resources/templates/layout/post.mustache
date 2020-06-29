@@ -1,0 +1,166 @@
+<!--포스트 공간-->
+<div id="posts_div">
+    {{#posts}}
+        <div class="media border p-3 post_body_div">
+            <input type="hidden" value="{{author.id}}" class="post_author_id">
+            <input type="hidden" class="hidden_post_id" value="{{post.id}}">
+            <input type="hidden" class="hidden_author_mainLang" value="{{author.mainLang}}">
+            <div class="media-body">
+                <div class="row">
+                    <img class="rounded-circle align-self-start col-4 col-sm-4 col-md-2 col-lg-2 col-xl-2"
+                         alt="Cinque Terre" src="{{author.picture}}" style="width:60px; height:60px">
+                    <a href="/user_page?user_id={{author.id}}"><h4 class="col">{{author.name}}<br></a>
+                        <small>
+                            <i class="language"><img src="/image/flagicon/{{author.mainLang}}.png"></i> ->
+                            {{#author.interestLang}}
+                                <i class="language"><img src="/image/flagicon/{{.}}.png"></i>
+                            {{/author.interestLang}}
+                        </small>
+                    </h4>
+                </div>
+                <p>
+
+                <div id="post-image-carousel" class="carousel slide p-1" data-ride="carousel">
+                    <ul class="carousel-indicators">
+                        {{#images}}
+                            <li data-target="#demo" data-slide-to="{{number}}" {{#state}}class="active"{{/state}}></li>
+                        {{/images}}
+
+                    </ul>
+
+                    <div class="carousel-inner">
+                        {{#images}}
+                            <div class="carousel-item {{#state}}active{{/state}}">
+                                <img src="{{imageName}}" style="width:100%; height: 300px;">
+                            </div>
+                        {{/images}}
+                    </div>
+
+                    <a class="carousel-control-prev" href="#post-image-carousel" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#post-image-carousel" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+                <!--본문-->
+                <div id="post-body-{{post.id}}">
+                    <p id="post_contents" class="contents">{{&post.contents}}</p>
+                    <!--번역문-->
+                    <p id="translate-div" class="translate-div">
+
+                    </p>
+                    <button type="button" id="btn-post-translate" name="btn-post-translate" class="btn translate_post"><i class='fas fa-language' style='color:blue;'></i>번역하기</button>
+                    <p>
+                        <!--<small class="text-muted">Last updated {{post.modifiedDate}}</small>-->
+                    </p>
+
+                    {{#post.tags}}<a href="/tag_page?tag={{.}}" class="card-text">#{{.}}</a>{{/post.tags}}
+                    <br><i><small>Posted on {{post.createdDate}}</small></i>
+                    <p>
+                    <div class="row float-left">
+                        <input type="hidden" value="{{post.id}}" class="like_post">
+                        {{#user}}
+                            <input type="hidden" value="{{user.id}}" class="like_user">
+                        {{/user}}
+                        <button id="btn-like" class="btn">
+                            <i class='{{post.isLike}} fa-heart' style='color:pink'></i>
+                            <i class="like_num">{{post.likes}}</i>
+                        </button>
+                        <button class="btn">
+                            <i class='far fa-comment' style='color:blue'></i>
+                            <i class="reply_num">{{post.replies}}</i>
+                        </button>
+                        <button class="btn" id="add_follower_btn">
+                           <i class='fas fa-user-plus' style='color:blue'></i>팔로우
+                        </button>
+                        <button class="btn" id="post_report_modal">
+                            <i class='fas fa-exclamation-triangle' style='color:red'></i>신고
+                        </button>
+
+
+                    </div>
+                    <div class="float-right" >
+                        {{#post.isMine}}
+                            <form id="update_form" method="post">
+                                <input class="update_id" type="hidden" value="{{post.id}}">
+                                <input class="update_contents" type="hidden" value="{{post.contents}}">
+                                <input class="update_tags" type="hidden" value="{{post.tags}}">
+                                <button type="button" class="btn" id="update_modal_button"><i class='fas fa-pencil-alt' style='color:blue'></i>수정</button>
+                            </form>
+
+                            <form id="delete_form" method="post">
+                                <input class="delete_input" type="hidden" value="{{post.id}}">
+                                <button type="button" class="btn" id="btn-post-delete" ><i class='fas fa-eraser' style='color:red'></i>삭제</button>
+                            </form>
+                        {{/post.isMine}}
+                    </div>
+                    </p>
+
+                    </br>
+                    </br>
+                    <hr>
+                    <div class="reply">
+                        <input class="reply_post_id" type="hidden" value="{{post.id}}">
+                        <div class="replies_list">
+                            {{#replies}}
+                                <div class="media reply-media">
+                                    <input type="hidden" value="{{author.id}}" class="reply_author_id">
+                                    <input type="hidden" value="{{id}}" class="reply_id">
+                                    <input type="hidden" value="{{author.mainLang}}" class="reply_author_mainLang">
+                                    <img src="{{author.picture}}" alt="John Doe" class="rounded-circle"
+                                         style="width:30px; height:30px;">
+                                    <a href="/user_page?user_id={{author.id}}">{{author.name}}</a>
+
+                                    <div class="media-body p-1">
+
+                                        <span id="post_contents" class="contents">{{&contents}}</span>
+                                        <!--번역문-->
+                                        <span id="translate-div" class="translate-div">
+
+                                        </span><br>
+
+
+                                        <button type="button" class="btn translate_reply" id="translate_reply_button" style="padding:1px"><i class='fas fa-language' style='color:blue;font-size:15px'></i>번역</button>
+                                        <button class="btn" id="reply_report_modal">
+                                            <i class='fas fa-exclamation-triangle' style='color:red;font-size:15px'></i>신고
+                                        </button>
+                                    {{#isMine}}
+                                        <button type="button" class="btn" id="update_reply_button" style="padding:1px"><i class='fas fa-pencil-alt' style='color:blue;font-size:15px'></i>수정</button>
+                                        <button type="button" class="btn" id="delete_reply_button"  style="padding:1px"><i class='fas fa-eraser' style='color:red;font-size:15px'></i>삭제</button>
+                                    {{/isMine}}
+                                    </div>
+                                </div>
+                            {{/replies}}
+                        </div>
+                        {{#remainReplies}}<a href="#" class="more_replies_load">{{.}}개의 댓글 더 보기</a>{{/remainReplies}}
+                        <div class="reply_util_div"></div>
+
+                    </div>
+
+
+                    <form class="reply_write_form">
+                        <div class="form-group row">
+                            {{#user}}<img src="{{user.picture}}"
+                                          class="rounded-circle col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" alt="Cinque Terre"
+                                          style="width:50px; height:50px">
+                                <input type="hidden" class="reply_post_id" value="{{post.id}}">{{/user}}
+                            {{#user}}<input type="hidden" class="reply_author_id" value="{{user.id}}">{{/user}}
+                            <textarea class="reply_contents form-control col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8" rows="2" id="comment"
+                                      name="text" style="font-size:9pt; resize:none"></textarea>
+                            <button type="button" id="btn-reply-save" class="btn btn-light" style="background-color: blue"><i
+                                    class='far fa-edit' style='color:white'></i></button>
+                        </div>
+                    </form>
+                </div>
+                </p>
+            </div>
+        </div>
+        </br></br>
+    {{/posts}}
+</div>
+<input type="hidden" value="0" class="page">
+</div>
+</div>
+
+</div>

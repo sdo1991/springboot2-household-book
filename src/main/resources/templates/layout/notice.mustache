@@ -1,0 +1,11 @@
+
+<!--공지사항 공간-->
+<div id="alert-top">
+    {{#notice}}{{#isActivated}}
+        <div class="alert alert-{{type}}">
+            <strong>{{title}}</strong>
+            {{contents}}
+        </div>
+    {{/isActivated}}{{/notice}}
+
+</div>

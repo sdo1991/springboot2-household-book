@@ -1,0 +1,67 @@
+
+<!--포스트 공간-->
+<div id="info">
+    <div class="media border p-3">
+        <div class="media-body" >
+            <div style="text-align:center">
+                <img src="{{target_user.picture}}" class="rounded-circle" style="width:100px; height:100px; align:center">
+                <H4>{{target_user.name}}</H4>
+                <H4>{{target_user.email}}</H4>
+                <H4>
+                    <i class="language"><img src="/image/flagicon/{{target_user.mainLang}}.png"></i> ->
+                    {{#target_user.interestLang}}
+                        <i class="language"><img src="/image/flagicon/{{.}}.png"></i>
+                    {{/target_user.interestLang}}
+                    </H4>
+                <button class="btn" id="add_follower_btn_user_page">
+                    <i class='fas fa-user-plus' style='color:blue'></i>팔로우
+                </button>
+                <hr>
+                <!--
+                <div class="row">
+                    <div class="col-3">
+                        <i class='far fa-address-book' style='font-size:30px;color:blue'></i><p font-size=20px>345</p>
+                    </div>
+                    <div class="col-3">
+                        <i class='far fa-address-book' style='font-size:30px;color:blue'></i><p font-size=20px>345</p>
+                    </div>
+                    <div class="col-3">
+                        <i class='far fa-address-book' style='font-size:30px;color:blue'></i><p font-size=20px>345</p>
+                    </div>
+                    <div class="col-3">
+                        <i class='far fa-address-book' style='font-size:30px;color:blue'></i><p font-size=20px>345</p>
+                    </div>
+                </div>
+                -->
+            </div>
+            <div class="media p-3">
+                <div class="media-body">
+
+                    <h4 class="p-1">자기소개</h4>
+                    <p>
+                        {{target_user.introduce}}
+                    </p><br>
+                </div>
+
+
+            </div>
+
+
+            {{#isAdmin}}
+                <div class="form-group col-6">
+                    현재 등급:{{target_user.role}}
+                    <input type="hidden" value="{{target_user.id}}" id="role_select_user_id">
+                    <select class="form-control" id="role_select">
+                        <option value="ADMIN" class="sel_option">관리자</option>
+                        <option value="USER" class="sel_option">유저</option>
+                        <option value="BLOCK" class="sel_option">차단</option>
+                    </select>
+                    <button class="btn" id="role_select_submit">적용</button>
+                </div>
+            {{/isAdmin}}
+
+        </div>
+    </div>
+</div>
+
+<hr>

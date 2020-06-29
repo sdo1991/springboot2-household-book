@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+
+<body>
+
+{{>layout/header}}
+
+
+
+<!--포스트 바디-->
+
+<div class="container" style="top:100px; width:450px">
+    <div id="alert-top" class="">
+        <div class="alert alert-success">
+            <strong>공지</strong> 이 페이지는 샘플 페이지입니다.
+        </div>
+        {{#notice}}
+            {{#isFirst}}
+
+            <div class="alert alert-{{type}} alert_body">
+                <input type="hidden" value="{{type}}" class="alert_type">
+                <input type="hidden" value="{{groupNum}}" id="group_num">
+
+                <label>공지</label>
+                <div class="row">
+                    <div class="form-group col-6">
+                        <select class="form-control" id="sel1">
+                            <option value="success" class="sel_option">초록</option>
+                            <option value="danger" class="sel_option">빨강</option>
+                            <option value="warning" class="sel_option">노랑</option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                    <label class="form-check-label" for="check1">
+                        <input type="checkbox" class="form-check-input" id="check1" name="option1" value="activated" {{#isActivated}}checked{{/isActivated}}>활성화
+                    </label>
+                    </div>
+                </div>
+                {{/isFirst}}
+                언어:{{language}}
+                <strong> <input type="text" class="form-control" id="title_{{language}}" value="{{title}}"></strong>
+                <textarea class="form-control" rows="2" id="contents_{{language}}">{{contents}}</textarea>
+
+            {{#isLast}}
+            </div>
+            {{/isLast}}
+        {{/notice}}
+    </div>
+    <button type="button" class="btn btn-primary btn-block" id="notice_update_btn">공지 설정</button>
+    <br>
+
+</div>
+
+
+
+</div>
+
+
+{{>layout/footer}}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+<script src="/js/app/header_footer_util.js"></script>
+<script src="/js/app/my_message_util.js"></script>
+<script src="/js/app/admin_notice.js"></script>
+
+
+
+</body>
+</html>

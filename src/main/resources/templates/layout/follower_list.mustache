@@ -1,0 +1,21 @@
+
+
+<div class="sticky-top bg-light" style="padding-top:60px;">
+    <div class="scroller scroller-left float-left mt-2"><i class="fa fa-chevron-left"></i></div>
+    <div class="scroller scroller-right float-right mt-2"><i class="fa fa-chevron-right"></i></div>
+    <div class="wrapper">
+        <nav class="nav nav-tabs list mt-2" id="myTab" role="tablist">
+            {{#follower}}
+            <a class="nav-item nav-link scroll_nav" href="/user_page?user_id={{userId}}" role="tab">
+                <div>
+                    <img src="{{picture}}" alt="John Doe" class="rounded-circle" style="width:50px; height:50px;">
+                    <div class="img-overlay">
+                        <p class="card-text" style="">{{name}}</p>
+                    </div>
+                </div>
+            </a>
+            {{/follower}}
+
+        </nav>
+    </div>
+</div>
