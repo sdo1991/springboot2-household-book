@@ -13,9 +13,16 @@
                         <i class="language"><img src="/image/flagicon/{{.}}.png"></i>
                     {{/target_user.interestLang}}
                     </H4>
+                {{#isFollower}}
                 <button class="btn" id="add_follower_btn_user_page">
                     <i class='fas fa-user-plus' style='color:blue'></i>팔로우
                 </button>
+                {{/isFollower}}
+                {{^isFollower}}
+                    <button class="btn" id="put_follower_btn_user_page">
+                        <i class='fas fa-user-plus' style='color:red'></i>팔로우 해제
+                    </button>
+                {{/isFollower}}
                 <hr>
                 <!--
                 <div class="row">

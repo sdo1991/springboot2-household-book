@@ -2,6 +2,7 @@ package com.dongoh.project.springboot.web;
 
 import com.dongoh.project.springboot.domain.post.PostLike;
 import com.dongoh.project.springboot.domain.user.User;
+import com.dongoh.project.springboot.domain.user.UserFollow;
 import com.dongoh.project.springboot.service.*;
 import com.dongoh.project.springboot.web.dto.image.ImagePostRequestDto;
 import com.dongoh.project.springboot.web.dto.message.MessageCheckRequestDto;
@@ -108,7 +109,7 @@ public class PostApiController {
         return result;
     }
 
-    @PostMapping("/api/post/add_follower")
+    @PostMapping("/api/post/follower")
     public boolean addFollower(@RequestBody FollowRequestDto requestDto) {
         boolean result = false;
 
@@ -121,6 +122,22 @@ public class PostApiController {
 
         return result;
     }
+    @DeleteMapping("/api/post/follower")
+    public boolean putFollower(@RequestBody FollowRequestDto requestDto) {
+        boolean result = false;
+
+        UserFollow entity=userFollowService.findByUserAndFollower(requestDto);
+
+        if (entity!=null) {
+            userFollowService.putFollow(entity);
+            //postService.addLike(requestDto);
+
+            result = true;
+        }
+
+        return result;
+    }
+
 
     @PostMapping("/api/post/load")
     public List<PostReadDto> loadPost(@RequestBody PostLoadRequestDto requestDto) {

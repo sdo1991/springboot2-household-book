@@ -54,4 +54,5 @@ public class UserResponseDto {
         this.userType=user.getUserType();
     }
 
+
 }

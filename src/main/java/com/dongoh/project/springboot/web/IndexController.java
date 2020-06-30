@@ -8,6 +8,8 @@ import com.dongoh.project.springboot.service.*;
 import com.dongoh.project.springboot.web.dto.notice.SimpleNoticeRequestDto;
 import com.dongoh.project.springboot.web.dto.post.PostWriteRequestDto;
 import com.dongoh.project.springboot.web.dto.reply.ReplyWriteRequestDto;
+import com.dongoh.project.springboot.web.dto.user.FollowRequestDto;
+import com.dongoh.project.springboot.web.dto.user.FollowerListResponseDto;
 import com.dongoh.project.springboot.web.dto.user.UserJoinRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.authentication.UserServiceBeanDefinitionParser;
@@ -38,6 +40,7 @@ public class IndexController {
     private final FindEntityService findEntityService;
     private final MessageService messageService;
     private final SimpleNoticeService simpleNoticeService;
+    private final UserFollowService userFollowService;
 
     boolean isInit=false;
 
@@ -217,6 +220,10 @@ public class IndexController {
             replyService.writeReply(ReplyWriteRequestDto.builder().author(sampleUser[18].getId()).contents("お疲れ様です。").post(postEntity.getId()).build());
             replyService.writeReply(ReplyWriteRequestDto.builder().author(sampleUser[3].getId()).contents("여기까지").post(postEntity.getId()).build());
 
+            /*
+            for(int i=0;i<sampleUser.length;i++)
+                userFollowService.addFollow(FollowRequestDto.builder().receiveUserId(sampleUser[i].getId()).sendUserId(adminUser.getId()).build());
+*/
 
 
             simpleNoticeService

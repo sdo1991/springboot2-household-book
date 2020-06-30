@@ -43,6 +43,10 @@ var main = {
         });
 
 
+        $(document).on("click","#put_follower_btn_user_page",function(){
+           _this.put_follower($("#user_login_id").val(),_this.getUrlParameter("user_id"));
+        });
+
         $(document).on("click","#btn-reply-save",function(){
            _this.save_reply($(this),_this);
 //            _this.load_all_replies($(this).parents('form.reply_write_form').siblings('div.reply').children('div.reply_util_div'));
@@ -179,10 +183,10 @@ var main = {
                 s+='</div></div>'
              });
            x.siblings('div.replies_list').html(s);
-           var offset = x.siblings('div.replies_list').offset();
-           $('html, body').animate({scrollTop : offset.top}, 400);
+           //var offset = x.siblings('div.replies_list').offset();
+           //$('html, body').animate({scrollTop : offset.top}, 400);
 
-            if(x.attr('class')=='more_replies_load')
+            if(x.attr('class')=='btn more_replies_load')
             {
                x.hide();
             }
@@ -324,7 +328,7 @@ var main = {
                     s+='</div>';
                     if(!dto.remainReplies){}
                     else
-                        s+='<a href="#" class="more_replies_load">'+dto.remainReplies+'개의 댓글 더 보기</a>';
+                        s+='<a class="btn more_replies_load">'+dto.remainReplies+'개의 댓글 더 보기</a>';
                     s+='<div class="reply_util_div"></div>'
 
                     s+='</div><form id="reply_write_form" class="reply_write_form"><div class="form-group row"><img src="'+$('#user_profile_image').val()+'" class="rounded-circle col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2" alt="Cinque Terre" style="width:50px; height:50px"><input type="hidden" class="reply_post_id" value="'+post.id+'">';
@@ -460,7 +464,7 @@ var main = {
 
             $.ajax({
                 type: 'POST',
-                url: '/api/post/add_follower',
+                url: '/api/post/follower',
     //             dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 data: JSON.stringify(data)
@@ -478,7 +482,44 @@ var main = {
             }).fail(function(error){
                 alert(JSON.stringify(error));
             });}
-        },
+        }
+,
+
+        put_follower : function(sUser, rUser){
+
+            if(sUser==rUser)
+            {
+                alert('자기 자신은 팔로워할 수 없습니다');
+            }
+            else{
+            var data={
+                sendUserId : sUser,
+                receiveUserId :rUser
+            };
+
+
+            $.ajax({
+                type: 'DELETE',
+                url: '/api/post/follower',
+    //             dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                data: JSON.stringify(data)
+            }).done(function(data){
+                if(data==true)
+                {
+                    //x.children('.far').attr('class', 'fas fa-heart');
+                    //x.children('i.like_num').text(Number(x.children('i.like_num').text())+1);
+                    alert('팔로우 해제 했습니다');
+                }
+                else
+                {
+                    alert("팔로워가 아닙니다.")
+                }
+            }).fail(function(error){
+                alert(JSON.stringify(error));
+            });}
+        }
+        ,
 
     add_like : function(x){
 

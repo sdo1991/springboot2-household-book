@@ -45,6 +45,28 @@ public class UserFollowService {
 
     }
 
+    @Transactional
+    public void putFollow(UserFollow entity)
+    {/*
+        UserFollow entity=UserFollow.builder()
+                .user(findEntityService.findUserByUserId(requestDto.getSendUserId()))
+                .follower(findEntityService.findUserByUserId(requestDto.getReceiveUserId()))
+                .build();
+       */
+        userFollowRepository.delete(entity);
+
+//        findEntityService.sendMessageForFollow(entity);
+
+    }
+
+    @Transactional(readOnly = true)
+    public UserFollow findByUserAndFollower(FollowRequestDto requestDto)
+    {
+        return userFollowRepository
+                .findByUserAndFollower(findEntityService.findUserByUserId(requestDto.getSendUserId())
+                        ,findEntityService.findUserByUserId(requestDto.getReceiveUserId()));
+    }
+
     @Transactional(readOnly = true)
     public boolean checkFollow(FollowRequestDto requestDto)
     {

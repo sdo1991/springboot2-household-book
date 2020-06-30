@@ -11,6 +11,7 @@ import com.dongoh.project.springboot.web.dto.image.ImagePostRequestDto;
 import com.dongoh.project.springboot.web.dto.message.MessageCheckRequestDto;
 import com.dongoh.project.springboot.web.dto.post.PostLikeRequestDto;
 import com.dongoh.project.springboot.web.dto.post.PostWriteRequestDto;
+import com.dongoh.project.springboot.web.dto.user.FollowRequestDto;
 import com.dongoh.project.springboot.web.dto.user.FollowerListResponseDto;
 import com.dongoh.project.springboot.web.dto.user.UserJoinRequestDto;
 import com.dongoh.project.springboot.web.dto.user.UserResponseDto;
@@ -361,8 +362,10 @@ public class MainController {
 
         UserResponseDto userResponseDto=UserResponseDto.builder().user(user).build();
 
+        Long targetUserId=Long.parseLong(request.getParameter("user_id"));
+
         model.addAttribute("user", userResponseDto);
-        model.addAttribute("target_user", UserResponseDto.builder().user(findEntityService.findUserByUserId(Long.parseLong(request.getParameter("user_id")))).build());
+        model.addAttribute("target_user", UserResponseDto.builder().user(findEntityService.findUserByUserId(targetUserId)).build());
         model.addAttribute("posts", postsService.findUserInfoPost(user,0,request.getParameter("user_id")));
         model.addAttribute("alarm",messageService.findAlarmMessageByUserId(user));
         model.addAttribute("notice", simpleNoticeService.findNoticeByLanguage(user.getMainLang()));
@@ -370,6 +373,9 @@ public class MainController {
             model.addAttribute("isAdmin", true);
         else
             model.addAttribute("isAdmin", false);
+
+        boolean isFollower=userFollowService.checkFollow(FollowRequestDto.builder().sendUserId(user.getId()).receiveUserId(targetUserId).build());
+        model.addAttribute("isFollower",isFollower);
 
 
         return "user_page";
